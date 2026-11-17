@@ -1,0 +1,393 @@
+/* =========================================================
+   Tiya Gupta - Portfolio
+   Fonts: Playfair Display (headings), Lato (text)
+   Colours: plum red + off white
+   ========================================================= */
+
+
+/* ---------- 1. COLOUR VARIABLES ---------- */
+:root {
+  --text: #040316;
+  --bg: #FBF2DA;          /* off white */
+  --primary: #850023;     /* plum red */
+  --secondary: #F2ABBE;   /* soft pink */
+  --accent: #41071A;      /* deep plum */
+  --card-bg: #FFFAEB;
+}
+
+/* Dark mode: shows automatically if the visitor's device uses dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #EAE9FC;
+    --bg: #251C04;
+    --primary: #FF7A9E;
+    --secondary: #540D20;
+    --accent: #F8BED1;
+    --card-bg: #31260A;
+  }
+}
+
+
+/* ---------- 2. RESET AND BASE STYLES ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.25;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* ---------- 3. NAVIGATION BAR ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 14px 6%;
+  background-color: var(--primary);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FBF2DA;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #FBF2DA;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.nav-links a:hover {
+  text-decoration: none;
+  border-bottom-color: #F2ABBE;
+}
+
+
+/* ---------- 4. HERO ---------- */
+#hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  background-color: var(--accent);
+  /* dark overlay on top of the lake photo so the text is easy to read */
+  background-image: linear-gradient(rgba(65, 7, 26, 0.65), rgba(65, 7, 26, 0.65)),
+                    url("tiya.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #FBF2DA;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero-small {
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #F2ABBE;
+}
+
+#hero h1 {
+  font-size: 4.5rem;
+  margin: 6px 0 18px;
+}
+
+.hero-line {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #FBF2DA;
+  color: #850023;
+  font-weight: 700;
+  border-radius: 30px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+  background-color: #F2ABBE;
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+
+/* ---------- 5. GENERAL SECTION STYLES ---------- */
+.section {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 80px 6%;
+}
+
+.section h2 {
+  font-size: 2.4rem;
+  color: var(--primary);
+  margin-bottom: 40px;
+}
+
+/* small line under every section heading */
+.section h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  margin-top: 10px;
+  background-color: var(--secondary);
+  border-radius: 2px;
+}
+
+
+/* ---------- 6. ABOUT ---------- */
+.about-box {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.profile-pic {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--primary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.about-text p {
+  margin-bottom: 16px;
+}
+
+
+/* ---------- 7. CARDS (Education + Experience) ---------- */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 26px;
+  border-radius: 12px;
+  border-top: 5px solid var(--primary);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin: 4px 0;
+}
+
+.date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.place {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.card ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+.card li {
+  margin-bottom: 6px;
+}
+
+
+/* ---------- 8. CERTIFICATIONS ---------- */
+.sub-heading {
+  font-size: 1.6rem;
+  margin: 50px 0 16px;
+  color: var(--primary);
+}
+
+.cert-list li {
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  background-color: var(--card-bg);
+  border-left: 5px solid var(--secondary);
+  border-radius: 4px;
+}
+
+
+/* ---------- 9. SKILLS ---------- */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.skill-group {
+  flex: 1 1 260px;
+  padding: 24px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.skill-group h3 {
+  margin-bottom: 14px;
+  color: var(--primary);
+}
+
+.skill-group li {
+  display: inline-block;
+  margin: 0 8px 10px 0;
+  padding: 5px 14px;
+  font-size: 0.95rem;
+  background-color: var(--secondary);
+  color: #040316;
+  border-radius: 20px;
+}
+
+
+/* ---------- 10. INTERESTS ---------- */
+.interest-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.interest-list li {
+  padding: 10px 26px;
+  font-weight: 700;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 30px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.interest-list li:hover {
+  background-color: var(--primary);
+  color: var(--bg);
+}
+
+
+/* ---------- 11. CONTACT ---------- */
+#contact {
+  text-align: center;
+}
+
+#contact h2::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-list {
+  margin-top: 16px;
+}
+
+.contact-list li {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+
+/* ---------- 12. FOOTER ---------- */
+footer {
+  padding: 26px 6%;
+  text-align: center;
+  background-color: var(--accent);
+  color: #FBF2DA;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #F2ABBE;
+}
+
+
+/* ---------- 13. RESPONSIVE (tablets and phones) ---------- */
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  #hero h1 {
+    font-size: 3rem;
+  }
+
+  .about-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .section {
+    padding: 60px 6%;
+  }
+}
